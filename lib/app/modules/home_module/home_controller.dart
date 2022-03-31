@@ -15,6 +15,15 @@ class HomeController extends GetxController
   var userDiceCount=0.obs;
   var imageArray = ['one.png', 'two.png', 'three.png', 'four.png', 'five.png', 'six.png'];
   var randomIntForDiceOne = Random().nextInt(5).obs;
+  late Rx<User?> firebaseUser;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    firebaseUser = Rx<User?>(auth.currentUser);
+  }
 
 
   changeImage()
