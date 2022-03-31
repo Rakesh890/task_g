@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1089807338877",
+    "project_id": "bijktask",
+    "storage_bucket": "bijktask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089807338877:android:f1c63b9bf138cf96401014",
+        "android_client_info": {
+          "package_name": "com.example.task_g"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089807338877-a5ve7e45jicknpfc2bqmhjvf4d836ugg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiKSQs5xd-A9MeAVQAKXoxRyd4V1KGgks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089807338877-a5ve7e45jicknpfc2bqmhjvf4d836ugg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
