@@ -73,7 +73,7 @@ class HomePage extends GetView<HomeController> {
           ],
         ),
       ),
-      bottomNavigationBar: _bottomNavBar(),
+      bottomNavigationBar: BottomAppBar(),
     );
   }
 }
