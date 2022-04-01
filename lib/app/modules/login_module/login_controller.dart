@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,13 @@ class LoginController extends GetxController{
   late TextEditingController emailControoler,passwordController;
   GlobalKey<FormState> loginFormKey = GlobalKey();
   var isShowLoader = false.obs;
+  late User user;
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+
     emailControoler = TextEditingController();
     passwordController = TextEditingController();
     //our user would be notified
@@ -68,16 +71,34 @@ class LoginController extends GetxController{
       {
         isShowLoader.value=false,
         if(value != null){
-        Get.snackbar("Successfully", "You Have Successfully Logged In",
-          backgroundColor: Colors.black,
-          colorText: Colors.white,),
-          Get.offNamed(Routes.HOME),
+          addUserInfo(user),
         },
       });
     }catch(e){
       isShowLoader.value=false;
       Get.snackbar("About Login", "Login message",);
     }
+  }
+
+
+  Future<void> addUserInfo(User user)
+  {
+    // Call the user's CollectionReference to add a new user
+    return FirebaseFirestore.instance.collection("Users")
+        .add({
+      "Name":"${user.displayName}",
+      "email":"${user.email}",
+      "isPlaying":"false",
+      "Attempt":"0",
+      "Score":"0",
+    }).then((value) =>
+    {
+      print("Added user info"),
+      Get.snackbar("Successfully", "You Have Successfully Logged In",
+        backgroundColor: Colors.black,
+        colorText: Colors.white,),
+      Get.offNamed(Routes.HOME),
+    }).catchError((error) => print("Failed to add user: $error"));
   }
 
 
