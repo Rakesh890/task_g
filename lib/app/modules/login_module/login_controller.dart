@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_g/app/routes/app_pages.dart';
 
 import '../../Constant/FirebaseContant.dart';
 
@@ -67,7 +68,10 @@ class LoginController extends GetxController{
       {
         isShowLoader.value=false,
         if(value != null){
-        Get.snackbar("Successfully", "You Have Successfully Logged In"),
+        Get.snackbar("Successfully", "You Have Successfully Logged In",
+          backgroundColor: Colors.black,
+          colorText: Colors.white,),
+          Get.offNamed(Routes.HOME),
         },
       });
     }catch(e){

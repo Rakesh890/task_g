@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_g/app/routes/app_pages.dart';
 
 
 class RegisterController extends GetxController
@@ -15,7 +16,7 @@ class RegisterController extends GetxController
 
   var passwordVisible = false.obs;
   var isShowloader=false.obs;
-
+  late User user;
   var sevriceResponse;
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -42,7 +43,12 @@ class RegisterController extends GetxController
       await  auth.createUserWithEmailAndPassword(email: email, password: password).then((value) =>
       {
         if(value != null){
-          print("Successfully Account Registered"),
+          user = value.user!,
+          user.updateProfile(displayName: name),
+          Get.offNamed(Routes.HOME),
+          Get.snackbar("Success", "Successfully Account Registered",backgroundColor: Colors.black,
+            colorText: Colors.white,
+          ),
         }else{
           print("Unable to register your account"),
         }

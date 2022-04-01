@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:new_version/new_version.dart';
 
 import '../../Constant/FirebaseContant.dart';
 /**
@@ -15,14 +17,33 @@ class HomeController extends GetxController
   var userDiceCount=0.obs;
   var imageArray = ['one.png', 'two.png', 'three.png', 'four.png', 'five.png', 'six.png'];
   var randomIntForDiceOne = Random().nextInt(5).obs;
-  late Rx<User?> firebaseUser;
+  var appVersion="".obs;
 
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    firebaseUser = Rx<User?>(auth.currentUser);
+    getCurrentUser();
+    getPackageInfo();
+  }
+
+  getCurrentUser() {
+    User? user = FirebaseAuth.instance.currentUser;
+    String username = user!.displayName.toString();
+    print( "User ${username}");
+  }
+
+  getPackageInfo() async {
+    final newVersion = NewVersion(
+      iOSId: 'com.example.task_g',
+      androidId: 'com.example.task_g',
+    );
+    appVersion.value  = "1.0.0";
+
+   //  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+   //  appVersion.value= packageInfo.version;
+   // print("App Version ${appVersion}");
   }
 
 

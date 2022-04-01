@@ -4,15 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:task_g/app/routes/app_pages.dart';
-
-import '../../AuthController.dart';
 import '../../Constant/FirebaseContant.dart';
 /**
  * GetX Template Generator - fb.com/htngu.99
  * */
 
 class SplashController extends GetxController {
-  static AuthController authInstance = Get.find();
   late Rx<User?> firebaseUser;
 
   @override
@@ -26,6 +23,7 @@ class SplashController extends GetxController {
    await Firebase.initializeApp();
     firebaseUser = Rx<User?>(auth.currentUser);
     firebaseUser.bindStream(auth.userChanges());
+    print("Get Info ${firebaseUser.toString()}");
     ever(firebaseUser, _setInitialScreen);
   }
 
