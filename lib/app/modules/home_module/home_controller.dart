@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_version/new_version.dart';
+import 'package:task_g/app/routes/app_pages.dart';
 
 import '../../Constant/FirebaseContant.dart';
 /**
@@ -18,6 +19,7 @@ class HomeController extends GetxController
   var imageArray = ['one.png', 'two.png', 'three.png', 'four.png', 'five.png', 'six.png'];
   var randomIntForDiceOne = Random().nextInt(5).obs;
   var appVersion="".obs;
+  var selectBottomIndex=0.obs;
 
 
   @override
@@ -68,5 +70,15 @@ class HomeController extends GetxController
       } catch (e) {
         print(e.toString());
       }
+  }
+
+  selectBottomTab(int value)
+  {
+    selectBottomIndex.value = value;
+  }
+
+  openLeaderBoard()
+  {
+    Get.toNamed(Routes.LEADERBOARD);
   }
 }

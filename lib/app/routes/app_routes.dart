@@ -8,4 +8,5 @@ abstract class Routes {
   static const LOGIN = '/login'; // Login page
   static const REGISTER = '/register'; // Register page
   static const SPLASH = '/splash'; // Splash page
+  static const LEADERBOARD = '/leaderboard'; // Leaderboard page
 }

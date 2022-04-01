@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_g/app/Constant/FirebaseContant.dart';
 import 'package:task_g/app/modules/home_module/home_controller.dart';
-/**
- * GetX Template Generator - fb.com/htngu.99
- * */
+
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -13,7 +11,8 @@ class HomePage extends GetView<HomeController> {
       backgroundColor: Colors.blue,
       appBar: AppBar(title: Text('Home'), elevation: 0, actions: [
         IconButton(
-            onPressed: () => controller.logout(), icon: Icon(Icons.logout))
+            onPressed: () => controller.logout(), icon: Icon(Icons.logout)),
+        IconButton(onPressed: () => controller.openLeaderBoard(), icon: Icon(Icons.leaderboard))
       ]),
       body: Container(
         child: Column(
@@ -73,7 +72,6 @@ class HomePage extends GetView<HomeController> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(),
     );
   }
 }

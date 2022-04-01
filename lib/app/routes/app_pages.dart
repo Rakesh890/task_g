@@ -1,3 +1,5 @@
+import '../../app/modules/leaderboard_module/leaderboard_page.dart';
+import '../../app/modules/leaderboard_module/leaderboard_bindings.dart';
 import '../../app/modules/splash_module/splash_page.dart';
 import '../../app/modules/splash_module/splash_bindings.dart';
 import '../../app/modules/register_module/register_page.dart';
@@ -33,6 +35,11 @@ abstract class AppPages {
       name: Routes.SPLASH,
       page: () => SplashPage(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: Routes.LEADERBOARD,
+      page: () => LeaderboardPage(),
+      binding: LeaderboardBinding(),
     ),
   ];
 }
