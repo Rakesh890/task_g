@@ -24,14 +24,24 @@ class HomePage extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                  Text(
-                    "Current User : ${auth.currentUser!.displayName}"
-                        .toUpperCase(),
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Text("Welcome", style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),),
+                      SizedBox(width: 10,),
+                      Text(
+                        "${auth.currentUser!.displayName}"
+                            .toUpperCase(),
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 10,),
                   Text(
                     "${controller.appVersion.value}",
                     style: TextStyle(
@@ -48,19 +58,33 @@ class HomePage extends GetView<HomeController> {
             SizedBox(
               height: 20,
             ),
-            Obx(
-              () => Center(
-                  child: Image.asset(
-                'assets/images/' +
-                    controller.imageArray[controller.randomIntForDiceOne.value],
-                height: 100,
-                width: 100,
-              )),
+            Obx(() => Center(
+                child: Text("Score : ${controller.userScore.value}",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24
+                ),),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(
+                () => Center(
+                    child: Image.asset(
+                  'assets/images/' +
+                      controller.imageArray[controller.randomIntForDiceOne.value],
+                  height: 100,
+                  width: 100,
+                )),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: RaisedButton(
-                onPressed: () => controller.changeImage(),
+                onPressed: () => controller.changeImage(controller.imageArray[controller.randomIntForDiceOne.value]),
                 color: Colors.white,
                 elevation: 1,
                 child: Text(

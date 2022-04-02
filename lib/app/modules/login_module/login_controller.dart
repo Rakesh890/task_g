@@ -76,7 +76,7 @@ class LoginController extends GetxController{
       });
     }catch(e){
       isShowLoader.value=false;
-      Get.snackbar("About Login", "Login message",);
+      // Get.snackbar("About Login", "Login message",);
     }
   }
 
@@ -87,10 +87,11 @@ class LoginController extends GetxController{
     return FirebaseFirestore.instance.collection("Users")
         .add({
       "Name":"${user.displayName}",
-      "email":"${user.email}",
+      "Email":"${user.email}",
       "isPlaying":"false",
       "Attempt":"0",
       "Score":"0",
+      "Uid":"${user.uid}"
     }).then((value) =>
     {
       print("Added user info"),

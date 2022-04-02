@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class LeaderboardController extends GetxController{
   var contactList = [].obs;
   var isShowLoader = false.obs;
-
+  // CollectionReference users = FirebaseFirestore.instance.collection('Users');
  @override
   void onInit() {
     // TODO: implement onInit

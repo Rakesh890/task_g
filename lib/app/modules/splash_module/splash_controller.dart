@@ -22,12 +22,12 @@ class SplashController extends GetxController {
   setUpFirebase()async{
    await Firebase.initializeApp();
     firebaseUser = Rx<User?>(auth.currentUser);
-    firebaseUser.bindStream(auth.userChanges());
+    // firebaseUser.bindStream(auth.userChanges());
     print("Get Info ${firebaseUser.toString()}");
-    ever(firebaseUser, _setInitialScreen);
+   _setInitialScreen(firebaseUser);
   }
 
-  _setInitialScreen(User? user) {
+  _setInitialScreen(user) {
     Timer(
         Duration(seconds: 3),
         () => {

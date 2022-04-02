@@ -8,6 +8,7 @@ import 'app/Constant/FirebaseContant.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

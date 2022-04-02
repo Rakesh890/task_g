@@ -10,21 +10,28 @@ class LeaderboardPage extends GetView<LeaderboardController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Leaderboard Page')),
-      body: Container(
-        child:(controller.isShowLoader.value == false) ?ListView.builder(
-            itemCount: controller.contactList.length,
-            itemBuilder: (context,int index){
-          return Card(
-            margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child:Column(
-              children: [
-                Text(controller.contactList[index]["name"]),
-                Text(controller.contactList[index]["score"]),
-                Text(controller.contactList[index]["attempt"])
-              ],
-            ),
-          );
-        }) : Center(child: CircularProgressIndicator()),
+      body: Obx(
+          () => Container(
+          child:(controller.isShowLoader.value == false) ? ListView.builder(
+              itemCount: controller.contactList.length,
+              itemBuilder: (context,int index){
+            return Card(
+              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child:Column(
+                children: [
+                  ListTile(
+                      leading:Image.network("https://aartel.com.au/wp-content/uploads/2018/12/avatar-placeholder-80x80.png"),
+                      title:Text(controller.contactList[index]["name"]),
+                    subtitle:
+                    Text("Attempt : ${controller.contactList[index]["attempt"]}"),
+                    trailing: Text(controller.contactList[index]["score"]),
+                  ),
+
+                ],
+              ),
+            );
+          }) : Center(child: CircularProgressIndicator()),
+        ),
       ),
     );
   }
